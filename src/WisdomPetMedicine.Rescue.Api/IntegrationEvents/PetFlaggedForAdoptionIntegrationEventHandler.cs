@@ -1,5 +1,6 @@
 ﻿using Azure.Messaging.ServiceBus;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -8,6 +9,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using WisdomPetMedicine.Rescue.Api.Infrastructure;
+using WisdomPetMedicine.Rescue.Domain.Entities;
+using WisdomPetMedicine.Rescue.Domain.Repositories;
+using WisdomPetMedicine.Rescue.Domain.ValueObjects;
 
 namespace WisdomPetMedicine.Rescue.Api.IntegrationEvents
 {
@@ -15,14 +20,17 @@ namespace WisdomPetMedicine.Rescue.Api.IntegrationEvents
     {
         private readonly IConfiguration _configuration;
         private readonly ILogger<PetFlaggedForAdoptionIntegrationEventHandler> _logger;
+        private readonly IServiceScopeFactory _serviceScopeFactory;
         private readonly ServiceBusClient _client;
         private readonly ServiceBusProcessor _processor;
 
-        public PetFlaggedForAdoptionIntegrationEventHandler(IConfiguration configuration, ILogger<PetFlaggedForAdoptionIntegrationEventHandler> logger)
+        public PetFlaggedForAdoptionIntegrationEventHandler(IConfiguration configuration, 
+            ILogger<PetFlaggedForAdoptionIntegrationEventHandler> logger,
+            IServiceScopeFactory serviceScopeFactory)
         {
             _configuration = configuration;
             _logger = logger;
-
+            _serviceScopeFactory = serviceScopeFactory;
             _client = new ServiceBusClient(configuration["ServiceBus:ConnectionString"]);
             _processor = _client.CreateProcessor(configuration["ServiceBus:TopicName"], configuration["ServiceBus:SubscriptionName"]);
 
@@ -41,7 +49,14 @@ namespace WisdomPetMedicine.Rescue.Api.IntegrationEvents
             var body = args.Message.Body.ToString();
             var theEvent = JsonConvert.DeserializeObject<PetFlaggedForAdoptionIntegrationEvent>(body);
             await args.CompleteMessageAsync(args.Message);
-            _logger?.LogInformation(body);
+
+            using var scope = _serviceScopeFactory.CreateScope();
+            var repo = scope.ServiceProvider.GetRequiredService<IRescueRepository>();
+            var dbContext = scope.ServiceProvider.GetRequiredService<RescueDbContext>();
+            dbContext.Add(theEvent);
+
+            var rescuedAnimal = new RescuedAnimal(RescuedAnimalId.Create(theEvent.Id));
+            await repo.AddRescuedAnimalAsync(rescuedAnimal);
         }
 
         protected async override Task ExecuteAsync(CancellationToken stoppingToken)
