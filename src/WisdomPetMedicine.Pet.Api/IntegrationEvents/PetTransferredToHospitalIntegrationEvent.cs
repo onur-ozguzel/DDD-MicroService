@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using WisdomPetMedicine.Common;
 
-namespace WisdomPetMedicine.Rescue.Api.IntegrationEvents
+namespace WisdomPetMedicine.Pet.Api.IntegrationEvents
 {
-    public class PetFlaggedForAdoptionIntegrationEvent
+    public class PetTransferredToHospitalIntegrationEvent : IIntegrationEvent
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
