@@ -18,7 +18,6 @@ namespace WisdomPetMedicine.Rescue.Api.IntegrationEvents
 {
     public class PetFlaggedForAdoptionIntegrationEventHandler : BackgroundService
     {
-        private readonly IConfiguration _configuration;
         private readonly ILogger<PetFlaggedForAdoptionIntegrationEventHandler> _logger;
         private readonly IServiceScopeFactory _serviceScopeFactory;
         private readonly ServiceBusClient _client;
@@ -28,7 +27,6 @@ namespace WisdomPetMedicine.Rescue.Api.IntegrationEvents
             ILogger<PetFlaggedForAdoptionIntegrationEventHandler> logger,
             IServiceScopeFactory serviceScopeFactory)
         {
-            _configuration = configuration;
             _logger = logger;
             _serviceScopeFactory = serviceScopeFactory;
             _client = new ServiceBusClient(configuration["ServiceBus:ConnectionString"]);

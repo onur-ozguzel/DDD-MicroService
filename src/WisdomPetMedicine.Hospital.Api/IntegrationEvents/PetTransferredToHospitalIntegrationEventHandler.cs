@@ -15,7 +15,6 @@ namespace WisdomPetMedicine.Hospital.Api.IntegrationEvents
 {
     public class PetTransferredToHospitalIntegrationEventHandler : BackgroundService
     {
-        private readonly IConfiguration _configuration;
         private readonly IServiceScopeFactory _serviceScopeFactory;
         private readonly ILogger<PetTransferredToHospitalIntegrationEventHandler> _logger;
         private readonly ServiceBusClient _client;
@@ -26,7 +25,6 @@ namespace WisdomPetMedicine.Hospital.Api.IntegrationEvents
             IServiceScopeFactory serviceScopeFactory,
             ILogger<PetTransferredToHospitalIntegrationEventHandler> logger)
         {
-            _configuration = configuration;
             _serviceScopeFactory = serviceScopeFactory;
             _logger = logger;
 
