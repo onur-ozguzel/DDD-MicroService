@@ -8,10 +8,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WisdomPetMedicine.RescueQuery.Api.Controllers
-{
+namespace WisdomPetMedicine.RescueQuery.Api.Controllers.V1
+{    
     [ApiController]
-    [Route("[controller]")]
+    [ApiVersion("1.0")]
+    [Route("v{version:apiVersion}/[controller]")]
     public class RescueQueryController : ControllerBase
     {
         private readonly IConfiguration configuration;
@@ -20,8 +21,9 @@ namespace WisdomPetMedicine.RescueQuery.Api.Controllers
         {
             this.configuration = configuration;
         }
-
+        
         [HttpGet]
+        [MapToApiVersion("1.0")]
         public async Task<IActionResult> Get()
         {
             string sql = @"select

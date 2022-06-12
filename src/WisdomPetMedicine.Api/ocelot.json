@@ -49,7 +49,7 @@
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
-      "DownstreamPathTemplate": "/rescuequery",
+      "DownstreamPathTemplate": "/v1/rescuequery",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
