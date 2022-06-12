@@ -31,9 +31,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WisdomPetMedicine.Pet.Api",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WisdomPetMedicine.RescueQuery.Api", "src\WisdomPetMedicine.RescueQuery.Api\WisdomPetMedicine.RescueQuery.Api.csproj", "{FB55198E-1669-465D-8B7C-E12567E957E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WisdomPetMedicine.Hotpital.Projector", "src\WisdomPetMedicine.Hotpital.Projector\WisdomPetMedicine.Hotpital.Projector.csproj", "{B9484B01-CF85-4C76-B8C3-F78A21F46C32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WisdomPetMedicine.Hotpital.Projector", "src\WisdomPetMedicine.Hotpital.Projector\WisdomPetMedicine.Hotpital.Projector.csproj", "{B9484B01-CF85-4C76-B8C3-F78A21F46C32}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WisdomPetMedicine.Hospital.Infrastructure", "src\WisdomPetMedicine.Hospital.Infrastructure\WisdomPetMedicine.Hospital.Infrastructure.csproj", "{3C5B5427-DA86-492D-8358-2AE2E47803E0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{BF841CF8-B565-44D7-A53F-2484515E9DA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WisdomPetMedicine.Api", "src\WisdomPetMedicine.Api\WisdomPetMedicine.Api.csproj", "{81C2CC0F-605A-445F-92AC-E553A91C3C02}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -201,6 +205,18 @@ Global
 		{3C5B5427-DA86-492D-8358-2AE2E47803E0}.Release|x64.Build.0 = Release|Any CPU
 		{3C5B5427-DA86-492D-8358-2AE2E47803E0}.Release|x86.ActiveCfg = Release|Any CPU
 		{3C5B5427-DA86-492D-8358-2AE2E47803E0}.Release|x86.Build.0 = Release|Any CPU
+		{81C2CC0F-605A-445F-92AC-E553A91C3C02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81C2CC0F-605A-445F-92AC-E553A91C3C02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81C2CC0F-605A-445F-92AC-E553A91C3C02}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{81C2CC0F-605A-445F-92AC-E553A91C3C02}.Debug|x64.Build.0 = Debug|Any CPU
+		{81C2CC0F-605A-445F-92AC-E553A91C3C02}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{81C2CC0F-605A-445F-92AC-E553A91C3C02}.Debug|x86.Build.0 = Debug|Any CPU
+		{81C2CC0F-605A-445F-92AC-E553A91C3C02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81C2CC0F-605A-445F-92AC-E553A91C3C02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81C2CC0F-605A-445F-92AC-E553A91C3C02}.Release|x64.ActiveCfg = Release|Any CPU
+		{81C2CC0F-605A-445F-92AC-E553A91C3C02}.Release|x64.Build.0 = Release|Any CPU
+		{81C2CC0F-605A-445F-92AC-E553A91C3C02}.Release|x86.ActiveCfg = Release|Any CPU
+		{81C2CC0F-605A-445F-92AC-E553A91C3C02}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -218,6 +234,7 @@ Global
 		{FB55198E-1669-465D-8B7C-E12567E957E0} = {29F05733-5BEC-41F1-B6DB-63A81C8C1608}
 		{B9484B01-CF85-4C76-B8C3-F78A21F46C32} = {ED32E001-37EB-482C-98B7-716EF5B463E7}
 		{3C5B5427-DA86-492D-8358-2AE2E47803E0} = {ED32E001-37EB-482C-98B7-716EF5B463E7}
+		{81C2CC0F-605A-445F-92AC-E553A91C3C02} = {BF841CF8-B565-44D7-A53F-2484515E9DA0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7097D41A-55D6-4B84-9F16-4568C9D6C544}
